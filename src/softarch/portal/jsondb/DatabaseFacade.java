@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Date;
 
 
-public class DatabaseFacade {
+public class DatabaseFacade implements IDatabaseFacade {
 
 	private String dbPath = "";
 	
@@ -31,8 +31,9 @@ public class DatabaseFacade {
 	/**
 	 * Updates an existing user profile in the user database.
 	 */
-	public void update(UserProfile profile)
-		throws JsonException {
+	public void update(UserProfile profile) 
+			throws JsonException
+	{
 
 		// Perform the update
 	}
@@ -51,7 +52,7 @@ public class DatabaseFacade {
 	 * Checks whether a user with the specified username exists.
 	 */
 	public boolean userExists(String username)
-		throws DatabaseException {
+		throws JsonException {
 
 		// TODO
 		return false;
@@ -75,16 +76,16 @@ public class DatabaseFacade {
 	public List findRecordsFrom(String informationType, Date date)
 		throws JsonException {
 
-		return regularDb.findRecordsFrom(informationType, date);
+		return null;
 	}
 
 	/**
 	 * Adds a new regular data object to the regular database.
 	 */
 	public void add(RegularData rd)
-		throws DatabaseException {
+		throws JsonException {
 	
-		regularDb.add(rd);
+		// Perform query
 	}
 
 	/**
@@ -92,59 +93,62 @@ public class DatabaseFacade {
 	 * regular database.
 	 */
 	public int getNumberOfRegularRecords(String informationType)
-		throws DatabaseException {
+		throws JsonException {
 
-		return regularDb.getNumberOfRegularRecords(informationType);
+		// TODO
+		return -1;
 	}
 
 	/**
 	 * Returns a list of all raw data.
 	 */
 	public List getRawData()
-		throws DatabaseException {
+		throws JsonException {
 
-		return rawDb.getRawData();
+		// TODO
+		return null;
 	}
 
 	/**
 	 * Returns a specific raw data object.
 	 */
 	public RawData getRawData(int id)
-		throws DatabaseException {
-
-		return rawDb.getRawData(id);
+		throws JsonException {
+		
+		// Todo
+		return null;
 	}
 
 	public void addRawData(RegularData rd)
-		throws DatabaseException {
-
-		rawDb.addRawData(rd);
+		throws JsonException {
+		// Todo
+		
 	}
 
 	/**
 	 * Deletes a raw data object.
 	 */
 	public void deleteRawData(RawData rd)
-		throws DatabaseException {
+		throws JsonException {
 
-		rawDb.deleteRawData(rd);
+		// TODO 
 	}
 
 	/**
 	 * Updates a raw data object.
 	 */
 	public void updateRawData(RawData rd)
-		throws DatabaseException {
+		throws JsonException {
 
-		rawDb.updateRawData(rd);
+		// TODO 
 	}
 
 	/**
 	 * Returns the number of records in the raw database.
 	 */
 	public int getNumberOfRawRecords()
-		throws DatabaseException {
+		throws JsonException {
 
-		return rawDb.getNumberOfRawRecords();
+		return -1;
 	}
 }
