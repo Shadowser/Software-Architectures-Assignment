@@ -23,27 +23,28 @@ public class DatabaseFacade {
 	 * Inserts a new user profile into the user database.
 	 */
 	public void insert(UserProfile profile)
-		throws DatabaseException {
+		throws JsonException {
 	
-		userDb.insert(profile);
+		// Perform the insert.
 	}
 
 	/**
 	 * Updates an existing user profile in the user database.
 	 */
 	public void update(UserProfile profile)
-		throws DatabaseException {
+		throws JsonException {
 
-		userDb.update(profile);
+		// Perform the update
 	}
 
 	/**
 	 * Returns the user with the specified username.
 	 */
 	public UserProfile findUser(String username)
-		throws DatabaseException {
+		throws JsonException {
 
-		return userDb.findUser(username);
+		// Perform select
+		return null;
 	}
 
 	/**
@@ -52,7 +53,8 @@ public class DatabaseFacade {
 	public boolean userExists(String username)
 		throws DatabaseException {
 
-		return userDb.userExists(username);
+		// TODO
+		return false;
 	}
 
 	/**
@@ -60,9 +62,10 @@ public class DatabaseFacade {
 	 * that match the given query string.
 	 */
 	public List findRecords(String informationType, String queryString)
-		throws DatabaseException {
+		throws JsonException {
 
-		return regularDb.findRecords(informationType, queryString);
+		// Todo
+		return null;
 	}
 
 	/**
@@ -70,7 +73,7 @@ public class DatabaseFacade {
 	 * that were added after the given date.
 	 */
 	public List findRecordsFrom(String informationType, Date date)
-		throws DatabaseException {
+		throws JsonException {
 
 		return regularDb.findRecordsFrom(informationType, date);
 	}
