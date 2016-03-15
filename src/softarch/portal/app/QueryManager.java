@@ -1,9 +1,10 @@
 package softarch.portal.app;
 
-import softarch.portal.db.DatabaseException;
-import softarch.portal.db.DatabaseFacade;
-
 import java.util.List;
+
+import softarch.portal.db.sql.DatabaseException;
+import softarch.portal.db.sql.DatabaseFacade;
+
 import java.util.Date;
 
 /**

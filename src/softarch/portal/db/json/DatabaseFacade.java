@@ -1,4 +1,4 @@
-package softarch.portal.jsondb;
+package softarch.portal.db.json;
 
 import softarch.portal.data.RawData;
 import softarch.portal.data.RegularData;
@@ -10,13 +10,15 @@ import java.util.Date;
 
 public class DatabaseFacade implements IDatabaseFacade {
 
-	private String dbPath = "";
+	private String dbPath = "database.json";
+	private JsonDB jsonDB;
 	
 	/**
 	 * Creates a new database facade.
 	 */
 	public DatabaseFacade(String dbPath) {
 		this.dbPath = dbPath;
+		this.jsonDB = new JsonDB(dbPath);
 	}
 
 	/**

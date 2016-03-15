@@ -1,4 +1,4 @@
-package softarch.portal.jsondb;
+package softarch.portal.db.json;
 
 public class JsonException extends Exception {
 	
