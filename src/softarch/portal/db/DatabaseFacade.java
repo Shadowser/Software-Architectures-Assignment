@@ -4,18 +4,43 @@ import softarch.portal.data.RawData;
 import softarch.portal.data.RegularData;
 import softarch.portal.data.UserProfile;
 import softarch.portal.db.IDatabaseFacade;
+import softarch.portal.db.json.DatabaseFacadeJson;
+import softarch.portal.db.sql.DatabaseFacadeSQL;
 
 import java.util.List;
+import java.util.Map;
+import java.io.IOException;
 import java.util.Date;
 
 
 public class DatabaseFacade implements IDatabaseFacade {
-
+	Map<String, String> properties = null;
+	IDatabaseFacade dbFacade = null;
+	
 	/**
 	 * Creates a new database facade.
 	 */
 	public DatabaseFacade(){
-		//TODO Hier moeten we dus kijken naar de config file?
+		//TODO config read
+		try {
+			properties = new ReadConfigFile().getPropValues();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		switch(properties.get("database")){
+		case "SQL":{
+			dbFacade = new DatabaseFacadeSQL(properties.get("username"), properties.get("password"), properties.get("url"));
+		}
+		break;
+		case "JSON":{
+			dbFacade = new DatabaseFacadeJson(properties.get("url"));
+		}
+		break;
+		default:{
+			//TODO exception 'invalid properties'
+		}
+		}
 	}
 
 	/**
@@ -23,9 +48,8 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 */
 	public void insert(UserProfile profile) throws DatabaseException
 	 {
-	
 		// Perform the insert.
-		
+		dbFacade.insert(profile);	
 	}
 
 	/**
@@ -34,7 +58,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 	public void update(UserProfile profile)  throws DatabaseException
 	{
 		// Perform the update
-		
+		dbFacade.update(profile);
 	}
 
 	/**
@@ -43,7 +67,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 	public UserProfile findUser(String username) throws DatabaseException
 	{
 		// Perform select
-		return null;	
+		return dbFacade.findUser(username);	
 	}
 
 	/**
@@ -51,9 +75,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 */
 	public boolean userExists(String username) throws DatabaseException
 	{
-
-		// TODO
-		return false;
+		return dbFacade.userExists(username);
 	}
 
 	/**
@@ -62,9 +84,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 */
 	public List findRecords(String informationType, String queryString) throws DatabaseException
 	{
-
-		// Todo
-		return null;
+		return dbFacade.findRecords(informationType, queryString);
 	}
 
 	/**
@@ -73,8 +93,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 */
 	public List findRecordsFrom(String informationType, Date date) throws DatabaseException
 	{
-
-		return null;
+		return dbFacade.findRecordsFrom(informationType, date);
 	}
 
 	/**
@@ -82,8 +101,8 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 */
 	public void add(RegularData rd) throws DatabaseException
 	{
-	
 		// Perform query
+		dbFacade.add(rd);
 	}
 
 	/**
@@ -92,9 +111,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 */
 	public int getNumberOfRegularRecords(String informationType) throws DatabaseException
 	{
-
-		// TODO
-		return -1;
+		return dbFacade.getNumberOfRegularRecords(informationType);
 	}
 
 	/**
@@ -102,9 +119,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 */
 	public List getRawData() throws DatabaseException
 	{
-
-		// TODO
-		return null;
+		return dbFacade.getRawData();
 	}
 
 	/**
@@ -112,15 +127,12 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 */
 	public RawData getRawData(int id) throws DatabaseException
 	{
-		
-		// Todo
-		return null;
+		return dbFacade.getRawData(id);
 	}
 
 	public void addRawData(RegularData rd) throws DatabaseException
 	{
-		// Todo
-		
+		dbFacade.addRawData(rd);
 	}
 
 	/**
@@ -128,8 +140,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 */
 	public void deleteRawData(RawData rd) throws DatabaseException
 	{
-
-		// TODO 
+		dbFacade.deleteRawData(rd);
 	}
 
 	/**
@@ -137,8 +148,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 */
 	public void updateRawData(RawData rd) throws DatabaseException
 	{
-
-		// TODO 
+		dbFacade.updateRawData(rd);
 	}
 
 	/**
@@ -146,7 +156,6 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 */
 	public int getNumberOfRawRecords() throws DatabaseException
 	{
-
-		return -1;
+		return dbFacade.getNumberOfRawRecords();
 	}
 }
