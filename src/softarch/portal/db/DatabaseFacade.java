@@ -21,7 +21,6 @@ public class DatabaseFacade implements IDatabaseFacade {
 	 * Creates a new database facade.
 	 */
 	public DatabaseFacade(){
-		//TODO config read
 		try {
 			properties = new ReadConfigFile().getPropValues();
 		} catch (IOException e) {
