@@ -11,6 +11,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import softarch.portal.data.RegularData;
 import softarch.portal.data.UserProfile;
 import softarch.portal.db.DatabaseContract;
 
@@ -188,5 +189,10 @@ public class JsonDB {
 		{
 			e.printStackTrace();
 		}
+	}
+
+	public void insertRegular(RegularData rd) {
+		// TODO Auto-generated method stub
+		
 	}
 }
