@@ -84,11 +84,12 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 
 	/**
 	 * Adds a new regular data object to the regular database.
+	 * e.g. a book
 	 */
 	public void add(RegularData rd)
 		throws DatabaseException {
 	
-		// Perform query
+		jsonDB.insertRegular(rd);
 	}
 
 	/**

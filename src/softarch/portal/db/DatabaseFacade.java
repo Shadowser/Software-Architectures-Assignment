@@ -14,8 +14,9 @@ import java.util.Date;
 
 
 public class DatabaseFacade {
-	static Map<String, String> properties = null;
-	static IDatabaseFacade dbFacade = null;
+	
+	private static Map<String, String> properties = null;
+	private static IDatabaseFacade dbFacade = null;
 	
 	/**
 	 * Creates a new database facade.
