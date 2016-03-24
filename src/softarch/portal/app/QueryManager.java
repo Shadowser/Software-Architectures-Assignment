@@ -3,7 +3,7 @@ package softarch.portal.app;
 import java.util.List;
 
 import softarch.portal.db.sql.DatabaseException;
-import softarch.portal.db.sql.DatabaseFacade;
+import softarch.portal.db.sql.DatabaseFacadeSQL;
 
 import java.util.Date;
 
@@ -17,7 +17,7 @@ public class QueryManager extends Manager {
 	 * @param dbFacade	The database facade the manager should use to
 	 * 			access the database.
 	 */
-	public QueryManager(DatabaseFacade dbFacade) {
+	public QueryManager(DatabaseFacadeSQL dbFacade) {
 		this.dbFacade = dbFacade;
 	}
 

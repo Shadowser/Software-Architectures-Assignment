@@ -4,7 +4,7 @@ import java.util.Map;
 
 import softarch.portal.data.UserProfile;
 import softarch.portal.db.sql.DatabaseException;
-import softarch.portal.db.sql.DatabaseFacade;
+import softarch.portal.db.sql.DatabaseFacadeSQL;
 
 import java.util.Hashtable;
 import java.util.List;
@@ -46,7 +46,7 @@ public class UserManager extends Manager {
 	 * @param dbFacade	The database facade the manager should
 	 * 			use to access the portal's database.
 	 */
-	public UserManager(DatabaseFacade dbFacade) {
+	public UserManager(DatabaseFacadeSQL dbFacade) {
 		// Initialize the superclass' members:
 		this.dbFacade	= dbFacade;
 		// Initialize the class' members:
