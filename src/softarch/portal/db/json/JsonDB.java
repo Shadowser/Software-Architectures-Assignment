@@ -52,14 +52,11 @@ public class JsonDB {
 		jsonObject.put("FirstName", up.getFirstName());
 		jsonObject.put("LastName", up.getLastName());
 		jsonObject.put("EmailAddress", up.getEmail());
-		jsonObject.put("LastLogin", up.getLastLogin());
+		jsonObject.put("LastLogin", up.getLastLogin().toString());
 		
 		String type = up.getClass().getName();
 		jsonObject.put("type", type);
 			
 		insert("users", jsonObject);
 	}
-	
-	
-	
 }

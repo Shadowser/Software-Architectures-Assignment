@@ -28,6 +28,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 		throws JsonException {
 	
 		// Perform the insert.
+		jsonDB.insertUserProfile(profile);
 	}
 
 	/**
