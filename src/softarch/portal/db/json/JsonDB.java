@@ -19,7 +19,7 @@ public class JsonDB {
 		this.dbPath = path;
 	}
 	
-	private void insert(String table, JSONObject jsonObject)
+	private void insert(String table, String primarykey, JSONObject jsonObject)
 	{
 		try
 		{
@@ -28,10 +28,10 @@ public class JsonDB {
 			JSONObject jsonTables = (JSONObject) obj;
 
 			// Get the table 
-			JSONArray jsonTable = (JSONArray) jsonTables.get(table);
+			JSONObject jsonTable = (JSONObject) jsonTables.get(table);
 			
 			// Add the record
-			jsonTable.add(jsonObject);
+			jsonTable.put(primarykey, jsonObject);
 			
 			// Save jsonTable to file
 			PrintWriter writer = new PrintWriter(this.dbPath, "UTF-8");
@@ -47,7 +47,6 @@ public class JsonDB {
 	public void insertUserProfile(UserProfile up)
 	{
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("Username",  up.getUsername());
 		jsonObject.put("Password", up.getPassword());
 		jsonObject.put("FirstName", up.getFirstName());
 		jsonObject.put("LastName", up.getLastName());
@@ -57,6 +56,30 @@ public class JsonDB {
 		String type = up.getClass().getName();
 		jsonObject.put("type", type);
 			
-		insert("users", jsonObject);
+		insert("users", up.getUsername(), jsonObject);
+	}
+	
+	
+	public UserProfile findUser(String username)
+	{
+		UserProfile up = null;
+		try
+		{
+			// Get our database
+			Object obj = parser.parse(new FileReader(this.dbPath));
+			JSONObject jsonTables = (JSONObject) obj;
+
+			// Get the table 
+			JSONArray jsonTable = (JSONArray) jsonTables.get("users");
+			
+			// Get the user
+			//up = jsonTable.get
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return up;
 	}
 }
