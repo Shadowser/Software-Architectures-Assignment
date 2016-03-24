@@ -98,12 +98,11 @@ public class JsonDB {
 		try
 		{
 			// Get our database
-			Object obj = parser.parse(new FileReader(this.dbPath));
-			JSONObject jsonTables = (JSONObject) obj;
+			JSONObject jsonTables = this.getJsonTables();
 
 			// Get the table 
-			JSONObject jsonTable = (JSONObject) jsonTables.get(DatabaseContract.Table_Users.TABLE_NAME);
-			
+			JSONObject jsonTable = (JSONObject) jsonTables.get(table);
+				
 			// Get the user
 			JSONObject user = (JSONObject) jsonTable.get(username);
 			
