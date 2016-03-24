@@ -11,6 +11,10 @@ import java.text.ParseException;
  * @author Niels Joncheere
  */
 public class CheapSubscription extends RegularUser {
+	
+	public CheapSubscription() {
+		
+	}
 	/**
 	 * Creates a new <i>cheap subscription</i> account from a
 	 * <code>javax.servlet.http.HttpServletRequest</code> object.

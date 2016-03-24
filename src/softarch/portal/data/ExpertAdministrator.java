@@ -10,6 +10,10 @@ import java.util.Date;
  * @author Niels Joncheere
  */
 public class ExpertAdministrator extends Administrator {
+	public ExpertAdministrator()
+	{	
+	}
+	
 	/**
 	 * Creates a new <i>expert administrator</i> account from a
 	 * <code>java.sql.ResultSet</code> object.

@@ -10,6 +10,7 @@ import java.util.Date;
  * @author Niels Joncheere
  */
 public class Operator extends UserProfile {
+	public Operator() {}
 	/**
 	 * Creates a new <i>operator</i> account from a
 	 * <code>java.sql.ResultSet</code> object.

@@ -10,6 +10,7 @@ import java.util.Date;
  * @author Niels Joncheere
  */
 public class RegularAdministrator extends Administrator {
+	public RegularAdministrator() {} 
 	/**
 	 * Creates a new <i>regular administrator</i> account from a
 	 * <code>java.sql.ResultSet</code> object.
