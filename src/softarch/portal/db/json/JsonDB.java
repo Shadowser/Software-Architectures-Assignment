@@ -2,6 +2,10 @@ package softarch.portal.db.json;
 
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -70,10 +74,25 @@ public class JsonDB {
 			JSONObject jsonTables = (JSONObject) obj;
 
 			// Get the table 
-			JSONArray jsonTable = (JSONArray) jsonTables.get("users");
+			JSONObject jsonTable = (JSONObject) jsonTables.get("users");
 			
 			// Get the user
-			//up = jsonTable.get
+			JSONObject user = (JSONObject) jsonTable.get(username);
+			
+			// Get the right type to return
+			String className = (String)user.get("type");
+			up = (UserProfile) Class.forName(className).newInstance();
+			
+			up.setUsername(username);
+			up.setFirstName((String)user.get("FirstName"));
+			up.setLastName((String)user.get("LastName"));
+			up.setPassword((String)user.get("Password"));
+			up.setEmailAddress((String)user.get("EmailAddress"));
+			
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd H:m:s", Locale.ENGLISH);
+			Date date = format.parse((String)user.get("LastLogin"));
+			up.setLastLogin(date);
+			
 		}
 		catch(Exception e)
 		{
