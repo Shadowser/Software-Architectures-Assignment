@@ -159,24 +159,23 @@ public class JsonDB {
 		return false;
 	}
 	
+	
+	
 	public void delete(String table, String primarykey)
 	{
 		try
 		{
 			// Get our database
-			Object obj = parser.parse(new FileReader(this.dbPath));
-			JSONObject jsonTables = (JSONObject) obj;
+			JSONObject jsonTables = this.getJsonTables();
 
 			// Get the table 
 			JSONObject jsonTable = (JSONObject) jsonTables.get(table);
 			
-			// Add the record
-			jsonTable.put(primarykey, jsonObject);
+			// Delete the record
+			jsonTable.remove(primarykey);
 			
 			// Save jsonTable to file
-			PrintWriter writer = new PrintWriter(this.dbPath, "UTF-8");
-			writer.print(jsonTables.toJSONString());
-			writer.close();
+			this.saveJSON(jsonTables.toJSONString());
 		}
 		catch(Exception e)
 		{
