@@ -23,13 +23,41 @@ public class JsonDB {
 		this.dbPath = path;
 	}
 	
+	private JSONObject getJsonTables()
+	{
+		JSONObject obj = null;
+		try
+		{
+			obj = (JSONObject) parser.parse(new FileReader(this.dbPath));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return obj;
+	}
+	
+	private void saveJSON(String json)
+	{
+		try
+		{
+			PrintWriter writer = new PrintWriter(this.dbPath, "UTF-8");
+			writer.print(json);
+			writer.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
 	private void insert(String table, String primarykey, JSONObject jsonObject)
 	{
 		try
 		{
 			// Get our database
-			Object obj = parser.parse(new FileReader(this.dbPath));
-			JSONObject jsonTables = (JSONObject) obj;
+			JSONObject jsonTables = this.getJsonTables();
 
 			// Get the table 
 			JSONObject jsonTable = (JSONObject) jsonTables.get(table);
@@ -38,9 +66,7 @@ public class JsonDB {
 			jsonTable.put(primarykey, jsonObject);
 			
 			// Save jsonTable to file
-			PrintWriter writer = new PrintWriter(this.dbPath, "UTF-8");
-			writer.print(jsonTables.toJSONString());
-			writer.close();
+			this.saveJSON(jsonTables.toJSONString());
 		}
 		catch(Exception e)
 		{
@@ -112,7 +138,7 @@ public class JsonDB {
 
 			// Get the table 
 			JSONObject jsonTable = (JSONObject) jsonTables.get("users");
-			
+
 			// Get the user
 			JSONObject user = (JSONObject) jsonTable.get(username);
 			
@@ -131,5 +157,30 @@ public class JsonDB {
 		}
 		
 		return false;
+	}
+	
+	public void delete(String table, String primarykey)
+	{
+		try
+		{
+			// Get our database
+			Object obj = parser.parse(new FileReader(this.dbPath));
+			JSONObject jsonTables = (JSONObject) obj;
+
+			// Get the table 
+			JSONObject jsonTable = (JSONObject) jsonTables.get(table);
+			
+			// Add the record
+			jsonTable.put(primarykey, jsonObject);
+			
+			// Save jsonTable to file
+			PrintWriter writer = new PrintWriter(this.dbPath, "UTF-8");
+			writer.print(jsonTables.toJSONString());
+			writer.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 }
