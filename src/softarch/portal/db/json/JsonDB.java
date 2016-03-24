@@ -171,10 +171,11 @@ public class JsonDB {
 		{
 			// Get our database
 			JSONObject jsonTables = this.getJsonTables();
+			
 
 			// Get the table 
 			JSONObject jsonTable = (JSONObject) jsonTables.get(DatabaseContract.Table_Users.TABLE_NAME);
-				
+			
 			// Get the user
 			JSONObject user = (JSONObject) jsonTable.get(username);
 			
