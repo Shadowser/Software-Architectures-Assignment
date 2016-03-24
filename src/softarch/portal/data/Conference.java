@@ -8,6 +8,8 @@ import java.text.ParseException;
 import java.net.MalformedURLException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
+
 /**
  * This class represents a conference.
  * @author Niels Joncheere
@@ -129,5 +131,11 @@ public class Conference extends RegularData {
 	public String asSqlDelete(RawData rd) {
 		return	"DELETE FROM RawConference WHERE ID = " + rd.getId() +
 			";";
+	}
+
+	@Override
+	public JSONObject asJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

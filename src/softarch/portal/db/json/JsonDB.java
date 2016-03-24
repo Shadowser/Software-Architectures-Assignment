@@ -143,12 +143,11 @@ public class JsonDB {
 		try
 		{
 			// Get our database
-			Object obj = parser.parse(new FileReader(this.dbPath));
-			JSONObject jsonTables = (JSONObject) obj;
+			JSONObject jsonTables = this.getJsonTables();
 
 			// Get the table 
-			JSONObject jsonTable = (JSONObject) jsonTables.get(DatabaseContract.Table_Users.TABLE_NAME);
-			
+			JSONObject jsonTable = (JSONObject) jsonTables.get(table);
+				
 			// Get the user
 			JSONObject user = (JSONObject) jsonTable.get(username);
 			
@@ -239,7 +238,15 @@ public class JsonDB {
 	}
 
 	public void insertRegular(RegularData rd) {
-		// TODO Auto-generated method stub
+		
+		JSONObject jsonObject = rd.asJSON();
+		String primarykey = (String)jsonObject.get("pk");
+		jsonObject.remove("pk"); // Don't save the PK.
+		
+		String type = rd.getClass().getName();
+		jsonObject.put(DatabaseContract.Table_Regular.COL_TYPE, type);
+			
+		insert(DatabaseContract.Table_Regular.TABLE_NAME, primarykey, jsonObject);
 		
 	}
 }

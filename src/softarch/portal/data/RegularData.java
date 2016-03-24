@@ -2,6 +2,8 @@ package softarch.portal.data;
 
 import java.util.Date;
 
+import org.json.simple.JSONObject;
+
 /**
  * This is an abstract superclass for all regular data (all data that
  * is inserted into or retrieved from the regular database).
@@ -31,4 +33,6 @@ public abstract class RegularData extends Data {
 	 * @see softarch.portal.data.RawData
 	 */
 	public abstract String asSqlDelete(RawData rd);
+	
+	public abstract JSONObject asJSON();
 }

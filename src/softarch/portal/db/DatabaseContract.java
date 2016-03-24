@@ -13,4 +13,10 @@ public class DatabaseContract {
 	    public static final String COL_TYPE = "Type";
 	}
 	
+	// Similar to the Table_Users should be done for the Table_Regular
+	public static abstract class Table_Regular {
+	    public static final String TABLE_NAME = "regulardata";
+	    public static final String COL_TYPE = "Type";
+	}
+	
 }

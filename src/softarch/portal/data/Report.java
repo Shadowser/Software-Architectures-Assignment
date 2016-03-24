@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
+
 /**
  * This class represents a report.
  * @author Niels Joncheere
@@ -122,5 +124,11 @@ public class Report extends RegularData {
 	 */
 	public String asSqlDelete(RawData rd) {
 		return "DELETE FROM RawReport WHERE ID = " + rd.getId() + ";";
+	}
+
+	@Override
+	public JSONObject asJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
