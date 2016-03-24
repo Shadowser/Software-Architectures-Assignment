@@ -48,7 +48,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 		throws JsonException {
 
 		// Perform select
-		return null;
+		return jsonDB.findUser(username);
 	}
 
 	/**
