@@ -1,11 +1,9 @@
-{
-"Book":[
+{"Book":[
   {"Pages":"0","PublicationDate":"2008-02-01 14:32:00","ISBN":"0","Author":"Mrs Test","Summary":"test","Title":"test","Publisher":"test","Review":"test","DateAdded":"2008-02-01 14:32:00"},
   {"Pages":"0","PublicationDate":"1995-02-01 14:32:00","ISBN":"0","Author":"Gama","Summary":"Design Patterns","Title":"Design Patterns","Publisher":"Addison-Wesley","Review":"","DateAdded":"2016-03-01 14:38:00"}],
 "users":{
-  "niels":{"FirstName":"Niels","LastLogin":"2008-02-01 14:32:00","LastName":"Joncheere","type":"softarch.portal.data.ExternalAdministrator","EmailAddress":"niels@soft","Password":"1234"},
-  "bruno":{"FirstName":"Bruno","LastLogin":"2008-02-01 14:32:00","LastName":"De Fraine","type":"softarch.portal.data.ExpensiveSubscription","EmailAddress":"bruno@soft","Password":"9012"},
   "test":{"FirstName":"test","LastLogin":"2008-02-01 14:32:00","LastName":"test","type":"softarch.portal.data.FreeSubscription","EmailAddress":"test@soft","Password":"test"},
+  "UsernameTest":{"FirstName":"FirstNameTest","LastLogin":"Thu Mar 24 19:26:59 CET 2016","LastName":"LastNameTest","type":"softarch.portal.data.CheapSubscription","EmailAddress":"EmailTest","Password":"PasswordTest"},
   "ragnhild":{"FirstName":"Ragnhild","LastLogin":"2008-02-01 14:32:00","LastName":"Van Der Straeten","type":"softarch.portal.data.Operator","EmailAddress":"ragnhild@soft","Password":"5678"},
-  }
-}
+  "bruno":{"FirstName":"Bruno","LastLogin":"2008-02-01 14:32:00","LastName":"De Fraine","type":"softarch.portal.data.ExpensiveSubscription","EmailAddress":"bruno@soft","Password":"9012"},
+  "niels":{"FirstName":"Niels","LastLogin":"2008-02-01 14:32:00","LastName":"Joncheere","type":"softarch.portal.data.ExternalAdministrator","EmailAddress":"niels@soft","Password":"1234"}}}
