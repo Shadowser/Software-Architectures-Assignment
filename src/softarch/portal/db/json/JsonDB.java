@@ -23,6 +23,7 @@ public class JsonDB {
 	{
 		try
 		{
+			// Get our database
 			Object obj = parser.parse(new FileReader(this.dbPath));
 			JSONObject jsonTables = (JSONObject) obj;
 
@@ -46,10 +47,17 @@ public class JsonDB {
 	public void insertUserProfile(UserProfile up)
 	{
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("username",  up.getUsername());
-		jsonObject.put("", "");
+		jsonObject.put("Username",  up.getUsername());
+		jsonObject.put("Password", up.getPassword());
+		jsonObject.put("FirstName", up.getFirstName());
+		jsonObject.put("LastName", up.getLastName());
+		jsonObject.put("EmailAddress", up.getEmail());
+		jsonObject.put("LastLogin", up.getLastLogin());
 		
-		insert("userprofile", jsonObject);
+		String type = up.getClass().getName();
+		jsonObject.put("type", type);
+			
+		insert("users", jsonObject);
 	}
 	
 	
