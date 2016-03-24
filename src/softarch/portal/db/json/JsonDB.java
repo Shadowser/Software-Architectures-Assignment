@@ -129,6 +129,40 @@ public class JsonDB {
 		
 		return regularDatas;
 	}
+	public List<RegularData> findRecordsFrom(String informationType, Date date){
+		List<RegularData> regularDatas = new ArrayList<RegularData>();
+		try
+		{
+			
+			// Get our database
+			JSONObject jsonTables = this.getJsonTables();
+
+			// Get the table 
+			JSONObject jsonTable = (JSONObject) jsonTables.get(DatabaseContract.Table_Regular.TABLE_NAME);
+			
+					
+			for (Object key : jsonTable.keySet()) {
+		        //based on you key types
+		        String keyStr = (String)key;
+		        JSONObject keyvalue = (JSONObject) jsonTable.get(keyStr);
+		        
+		        DateFormat format = new SimpleDateFormat("yyyy-MM-dd H:m:s", Locale.ENGLISH);
+				Date dateAdded = format.parse((String)keyvalue.get("DateAdded"));
+				Date publicationDate = format.parse((String)keyvalue.get("PublicationDate"));
+				
+		       if(dateAdded.getTime()>date.getTime()){
+		    	   Book regulardata = new Book(dateAdded, keyvalue.get("Author").toString(), Long.parseLong(keyvalue.get("ISBN").toString()), Integer.parseInt(keyvalue.get("Pages").toString()), publicationDate, keyvalue.get("Publisher").toString(), keyvalue.get("Review").toString(), keyvalue.get("Summary").toString(), keyvalue.get("Title").toString());
+		        	regularDatas.add(regulardata);
+		        }		        
+		    }	
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return regularDatas;
+	}
 	
 	public UserProfile findUser(String username)
 	{

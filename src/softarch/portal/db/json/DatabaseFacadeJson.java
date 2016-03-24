@@ -68,8 +68,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	public List findRecords(String informationType, String queryString)
 		throws DatabaseException {
 
-		// Todo
-		return null;
+		return jsonDB.findRecords(informationType, queryString);
 	}
 
 	/**
