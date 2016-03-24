@@ -159,7 +159,11 @@ public class JsonDB {
 		return false;
 	}
 	
-	
+	public void updateUserProfile(UserProfile up)
+	{
+		this.delete("users", up.getUsername());
+		this.insertUserProfile(up);
+	}
 	
 	public void delete(String table, String primarykey)
 	{
