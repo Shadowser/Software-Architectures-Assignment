@@ -88,7 +88,7 @@ public class JsonDB {
 			up.setLastName((String)user.get("LastName"));
 			up.setPassword((String)user.get("Password"));
 			up.setEmailAddress((String)user.get("EmailAddress"));
-			
+
 			DateFormat format = new SimpleDateFormat("yyyy-MM-dd H:m:s", Locale.ENGLISH);
 			Date date = format.parse((String)user.get("LastLogin"));
 			up.setLastLogin(date);
@@ -100,5 +100,36 @@ public class JsonDB {
 		}
 		
 		return up;
+	}
+	
+	public boolean userExists(String username)
+	{
+		try
+		{
+			// Get our database
+			Object obj = parser.parse(new FileReader(this.dbPath));
+			JSONObject jsonTables = (JSONObject) obj;
+
+			// Get the table 
+			JSONObject jsonTable = (JSONObject) jsonTables.get("users");
+			
+			// Get the user
+			JSONObject user = (JSONObject) jsonTable.get(username);
+			
+			if(user.get("Password").equals("") || user.get("Password") == null)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 }
