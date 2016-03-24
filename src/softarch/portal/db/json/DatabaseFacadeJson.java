@@ -38,8 +38,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	public void update(UserProfile profile) 
 			throws JsonException
 	{
-
-		// Perform the update
+		jsonDB.updateUserProfile(profile);
 	}
 
 	/**
@@ -58,8 +57,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	public boolean userExists(String username)
 		throws JsonException {
 
-		// TODO
-		return false;
+		return jsonDB.userExists(username);
 	}
 
 	/**
