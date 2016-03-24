@@ -2,3 +2,7 @@
 .settings/org.eclipse.wst.common.project.facet.core.xml
 
 .classpath
+
+build/classes/config.properties
+
+resources/config.properties
