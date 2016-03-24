@@ -19,18 +19,22 @@ public class JsonDB {
 		this.dbPath = path;
 	}
 	
-	private boolean insert(String table, JSONObject jsonObject)
+	private void insert(String table, JSONObject jsonObject)
 	{
 		try
 		{
 			Object obj = parser.parse(new FileReader(this.dbPath));
-			JSONArray jsonTables = (JSONArray) obj;
-			JSONArray jsonTable = jsonTables.getJSONObject();
+			JSONObject jsonTables = (JSONObject) obj;
+
+			// Get the table 
+			JSONArray jsonTable = (JSONArray) jsonTables.get(table);
+			
+			// Add the record
 			jsonTable.add(jsonObject);
 			
 			// Save jsonTable to file
 			PrintWriter writer = new PrintWriter(this.dbPath, "UTF-8");
-			writer.print(jsonTable.toJSONString());
+			writer.print(jsonTables.toJSONString());
 			writer.close();
 		}
 		catch(Exception e)
@@ -39,12 +43,13 @@ public class JsonDB {
 		}
 	}
 	
-	public boolean insertUserProfile(UserProfile up)
+	public void insertUserProfile(UserProfile up)
 	{
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("username",  up.getUsername());
+		jsonObject.put("", "");
 		
-		return insert("userprofile", jsonObject);
+		insert("userprofile", jsonObject);
 	}
 	
 	
