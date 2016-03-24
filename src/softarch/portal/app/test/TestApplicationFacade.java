@@ -19,10 +19,7 @@ public class TestApplicationFacade {
 				"Joncheere",
 				"niels@joncheere.be",
 				new Date());
-			ApplicationFacade appFacade = new ApplicationFacade(
-				"njonchee",
-				"chivas12",
-				"localhost/njonchee");
+			ApplicationFacade appFacade = new ApplicationFacade(); //TODO in config file :"njonchee","chivas12","localhost/njonchee"
 			appFacade.add(fs);
 		}
 		catch (Exception e) {

@@ -129,7 +129,7 @@ public class InternetFrontEnd extends HttpServlet {
 		properties.put("dbUrl", dbUser);
 		properties.put("stylesheet", stylesheet);
 
-		ApplicationFacade appFacade = new ApplicationFacade(dbUser, dbPassword, dbUrl);
+		ApplicationFacade appFacade = new ApplicationFacade();
 
 		pages.put("Registration", new RegistrationPage(appFacade));
 		pages.put("Login", new LoginPage(appFacade));

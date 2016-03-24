@@ -3,6 +3,8 @@ package softarch.portal.db.sql;
 import softarch.portal.data.RawData;
 import softarch.portal.data.RegularData;
 import softarch.portal.data.UserProfile;
+import softarch.portal.db.DatabaseException;
+import softarch.portal.db.IDatabaseFacade;
 
 import java.util.List;
 import java.util.Date;
@@ -11,7 +13,7 @@ import java.util.Date;
  * This class implements a facade for all of the database layer's functionality.
  * @author Niels Joncheere
  */
-public class DatabaseFacadeSQL {
+public class DatabaseFacadeSQL implements IDatabaseFacade{
 	private UserDatabase	userDb;
 	private RegularDatabase	regularDb;
 	private RawDatabase	rawDb;

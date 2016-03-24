@@ -8,6 +8,7 @@ import softarch.portal.data.FreeSubscription;
 import softarch.portal.data.Operator;
 import softarch.portal.data.RegularAdministrator;
 import softarch.portal.data.UserProfile;
+import softarch.portal.db.DatabaseException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

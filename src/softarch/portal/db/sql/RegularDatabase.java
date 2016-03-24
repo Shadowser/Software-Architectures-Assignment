@@ -17,6 +17,7 @@ import softarch.portal.data.InterestingWebsite;
 import softarch.portal.data.RegularData;
 import softarch.portal.data.Report;
 import softarch.portal.data.SoftwareRepository;
+import softarch.portal.db.DatabaseException;
 
 import java.text.ParseException;
 import java.sql.SQLException;

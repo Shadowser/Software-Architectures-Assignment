@@ -1,6 +1,7 @@
 package softarch.portal.app;
 
-import softarch.portal.db.sql.DatabaseException;
+import softarch.portal.db.DatabaseException;
+import softarch.portal.db.DatabaseFacade;
 import softarch.portal.db.sql.DatabaseFacadeSQL;
 
 /**
@@ -15,7 +16,7 @@ public class OperationManager extends Manager {
 	 * @param dbFacade	The database facade the manager should use to
 	 * 			access the portal's database(s).
 	 */
-	public OperationManager(DatabaseFacadeSQL dbFacade) {
+	public OperationManager(DatabaseFacade dbFacade) {
 		this.dbFacade = dbFacade;
 	}
 

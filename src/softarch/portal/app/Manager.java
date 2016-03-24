@@ -1,5 +1,6 @@
 package softarch.portal.app;
 
+import softarch.portal.db.DatabaseFacade;
 import softarch.portal.db.sql.DatabaseFacadeSQL;
 
 /**
@@ -7,5 +8,5 @@ import softarch.portal.db.sql.DatabaseFacadeSQL;
  * @author Niels Joncheere
  */
 public abstract class Manager {
-	protected DatabaseFacadeSQL dbFacade;
+	protected DatabaseFacade dbFacade;
 }

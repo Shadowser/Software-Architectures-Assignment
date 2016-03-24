@@ -3,7 +3,8 @@ package softarch.portal.app;
 import softarch.portal.data.RawData;
 import softarch.portal.data.RegularData;
 import softarch.portal.data.UserProfile;
-import softarch.portal.db.sql.DatabaseFacade;
+import softarch.portal.db.DatabaseFacade;
+import softarch.portal.db.sql.DatabaseFacadeSQL;
 
 import java.util.List;
 import java.util.Date;
@@ -24,9 +25,9 @@ public class ApplicationFacade {
 	/**
 	 * Creates a new application facade.
 	 */
-	public ApplicationFacade(String dbUser, String dbPassword, String dbUrl) {
+	public ApplicationFacade() {
 
-		DatabaseFacade dbFacade = new DatabaseFacade(dbUser, dbPassword, dbUrl);
+		DatabaseFacade dbFacade = new DatabaseFacade();
 
 		userManager = new UserManager(dbFacade);
 		queryManager = new QueryManager(dbFacade);
