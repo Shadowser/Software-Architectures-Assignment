@@ -3,6 +3,7 @@ package softarch.portal.db.json;
 import softarch.portal.data.RawData;
 import softarch.portal.data.RegularData;
 import softarch.portal.data.UserProfile;
+import softarch.portal.db.DatabaseException;
 import softarch.portal.db.IDatabaseFacade;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * Inserts a new user profile into the user database.
 	 */
 	public void insert(UserProfile profile)
-		throws JsonException {
+		throws DatabaseException {
 	
 		// Perform the insert.
 		jsonDB.insertUserProfile(profile);
@@ -36,7 +37,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * Updates an existing user profile in the user database.
 	 */
 	public void update(UserProfile profile) 
-			throws JsonException
+			throws DatabaseException
 	{
 		jsonDB.updateUserProfile(profile);
 	}
@@ -45,7 +46,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * Returns the user with the specified username.
 	 */
 	public UserProfile findUser(String username)
-		throws JsonException {
+		throws DatabaseException {
 
 		// Perform select
 		return jsonDB.findUser(username);
@@ -55,7 +56,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * Checks whether a user with the specified username exists.
 	 */
 	public boolean userExists(String username)
-		throws JsonException {
+		throws DatabaseException {
 
 		return jsonDB.userExists(username);
 	}
@@ -65,7 +66,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * that match the given query string.
 	 */
 	public List findRecords(String informationType, String queryString)
-		throws JsonException {
+		throws DatabaseException {
 
 		// Todo
 		return null;
@@ -76,7 +77,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * that were added after the given date.
 	 */
 	public List findRecordsFrom(String informationType, Date date)
-		throws JsonException {
+		throws DatabaseException {
 
 		return null;
 	}
@@ -85,7 +86,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * Adds a new regular data object to the regular database.
 	 */
 	public void add(RegularData rd)
-		throws JsonException {
+		throws DatabaseException {
 	
 		// Perform query
 	}
@@ -95,7 +96,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * regular database.
 	 */
 	public int getNumberOfRegularRecords(String informationType)
-		throws JsonException {
+		throws DatabaseException {
 
 		// TODO
 		return -1;
@@ -105,7 +106,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * Returns a list of all raw data.
 	 */
 	public List getRawData()
-		throws JsonException {
+		throws DatabaseException {
 
 		// TODO
 		return null;
@@ -115,14 +116,14 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * Returns a specific raw data object.
 	 */
 	public RawData getRawData(int id)
-		throws JsonException {
+		throws DatabaseException {
 		
 		// Todo
 		return null;
 	}
 
 	public void addRawData(RegularData rd)
-		throws JsonException {
+		throws DatabaseException {
 		// Todo
 		
 	}
@@ -131,7 +132,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * Deletes a raw data object.
 	 */
 	public void deleteRawData(RawData rd)
-		throws JsonException {
+		throws DatabaseException {
 
 		// TODO 
 	}
@@ -140,7 +141,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * Updates a raw data object.
 	 */
 	public void updateRawData(RawData rd)
-		throws JsonException {
+		throws DatabaseException {
 
 		// TODO 
 	}
@@ -149,7 +150,7 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	 * Returns the number of records in the raw database.
 	 */
 	public int getNumberOfRawRecords()
-		throws JsonException {
+		throws DatabaseException {
 
 		return -1;
 	}
