@@ -15,7 +15,7 @@ public class ReadConfigFile {
 		Map<String, String> result = new HashMap<String, String>();
 		try {
 			Properties prop = new Properties();
-			String propFileName = "config.properties";
+			String propFileName = "resources/config.properties";
  
 			inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
  
