@@ -12,6 +12,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import softarch.portal.data.UserProfile;
+import softarch.portal.db.DatabaseContract;
 
 public class JsonDB {
 
@@ -77,16 +78,16 @@ public class JsonDB {
 	public void insertUserProfile(UserProfile up)
 	{
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("Password", up.getPassword());
-		jsonObject.put("FirstName", up.getFirstName());
-		jsonObject.put("LastName", up.getLastName());
-		jsonObject.put("EmailAddress", up.getEmail());
-		jsonObject.put("LastLogin", up.getLastLogin().toString());
+		jsonObject.put(DatabaseContract.Table_Users.COL_PASSWORD, up.getPassword());
+		jsonObject.put(DatabaseContract.Table_Users.COL_FIRST_NAME, up.getFirstName());
+		jsonObject.put(DatabaseContract.Table_Users.COL_LAST_NAME, up.getLastName());
+		jsonObject.put(DatabaseContract.Table_Users.COL_EMAIL, up.getEmail());
+		jsonObject.put(DatabaseContract.Table_Users.COL_LAST_LOGIN, up.getLastLogin().toString());
 		
 		String type = up.getClass().getName();
-		jsonObject.put("type", type);
+		jsonObject.put(DatabaseContract.Table_Users.COL_TYPE, type);
 			
-		insert("users", up.getUsername(), jsonObject);
+		insert(DatabaseContract.Table_Users.TABLE_NAME, up.getUsername(), jsonObject);
 	}
 	
 	
@@ -100,23 +101,23 @@ public class JsonDB {
 			JSONObject jsonTables = (JSONObject) obj;
 
 			// Get the table 
-			JSONObject jsonTable = (JSONObject) jsonTables.get("users");
+			JSONObject jsonTable = (JSONObject) jsonTables.get(DatabaseContract.Table_Users.TABLE_NAME);
 			
 			// Get the user
 			JSONObject user = (JSONObject) jsonTable.get(username);
 			
 			// Get the right type to return
-			String className = (String)user.get("type");
+			String className = (String)user.get(DatabaseContract.Table_Users.COL_TYPE);
 			up = (UserProfile) Class.forName(className).newInstance();
 			
 			up.setUsername(username);
-			up.setFirstName((String)user.get("FirstName"));
-			up.setLastName((String)user.get("LastName"));
-			up.setPassword((String)user.get("Password"));
-			up.setEmailAddress((String)user.get("EmailAddress"));
+			up.setFirstName((String)user.get(DatabaseContract.Table_Users.COL_FIRST_NAME));
+			up.setLastName((String)user.get(DatabaseContract.Table_Users.COL_LAST_NAME));
+			up.setPassword((String)user.get(DatabaseContract.Table_Users.COL_PASSWORD));
+			up.setEmailAddress((String)user.get(DatabaseContract.Table_Users.COL_EMAIL));
 
 			DateFormat format = new SimpleDateFormat("yyyy-MM-dd H:m:s", Locale.ENGLISH);
-			Date date = format.parse((String)user.get("LastLogin"));
+			Date date = format.parse((String)user.get(DatabaseContract.Table_Users.COL_LAST_LOGIN));
 			up.setLastLogin(date);
 			
 		}
@@ -137,12 +138,14 @@ public class JsonDB {
 			JSONObject jsonTables = (JSONObject) obj;
 
 			// Get the table 
-			JSONObject jsonTable = (JSONObject) jsonTables.get("users");
+			JSONObject jsonTable = (JSONObject) jsonTables.get(DatabaseContract.Table_Users.TABLE_NAME);
 
 			// Get the user
 			JSONObject user = (JSONObject) jsonTable.get(username);
 			
-			if(user.get("Password").equals("") || user.get("Password") == null)
+			// We can assume that if the password is empty
+			// That the user does not exist.
+			if(user.get(DatabaseContract.Table_Users.COL_PASSWORD).equals("") || user.get(DatabaseContract.Table_Users.COL_PASSWORD) == null)
 			{
 				return false;
 			}
@@ -161,7 +164,7 @@ public class JsonDB {
 	
 	public void updateUserProfile(UserProfile up)
 	{
-		this.delete("users", up.getUsername());
+		this.delete(DatabaseContract.Table_Users.TABLE_NAME, up.getUsername());
 		this.insertUserProfile(up);
 	}
 	
