@@ -4,6 +4,7 @@ import softarch.portal.data.RawData;
 import softarch.portal.data.RegularData;
 import softarch.portal.data.UserProfile;
 import softarch.portal.db.DatabaseFacade;
+import softarch.portal.db.IDatabaseFacade;
 import softarch.portal.db.sql.DatabaseFacadeSQL;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class ApplicationFacade {
 	 */
 	public ApplicationFacade() {
 
-		DatabaseFacade dbFacade = new DatabaseFacade();
+		IDatabaseFacade dbFacade = DatabaseFacade.getDatabaseFacade();
 
 		userManager = new UserManager(dbFacade);
 		queryManager = new QueryManager(dbFacade);

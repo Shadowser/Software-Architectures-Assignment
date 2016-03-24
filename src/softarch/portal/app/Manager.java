@@ -1,12 +1,12 @@
 package softarch.portal.app;
 
-import softarch.portal.db.DatabaseFacade;
-import softarch.portal.db.sql.DatabaseFacadeSQL;
+import softarch.portal.db.IDatabaseFacade;
+
 
 /**
  * This class is an abstract superclass for all <i>managers</i>.
  * @author Niels Joncheere
  */
 public abstract class Manager {
-	protected DatabaseFacade dbFacade;
+	protected IDatabaseFacade dbFacade;
 }
