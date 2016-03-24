@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -13,6 +14,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import softarch.portal.data.Book;
 import softarch.portal.data.RegularData;
 import softarch.portal.data.UserProfile;
 import softarch.portal.db.DatabaseContract;
@@ -102,39 +104,30 @@ public class JsonDB {
 			JSONObject jsonTables = this.getJsonTables();
 
 			// Get the table 
-			JSONObject jsonTable = (JSONObject) jsonTables.get(DatabaseContract);
+			JSONObject jsonTable = (JSONObject) jsonTables.get(DatabaseContract.Table_Regular.TABLE_NAME);
 			
-			
-			// Get the user
-			//JSONObject user = (JSONObject) jsonTable.get(username);
-			for (JSONObject e : jsonTable) {
-				if (e.get().contains(queryString) {
-				   //add to my result list
-					regularDatas.add(e);
-			  }
-			}
-			
-			// Get the right type to return
-			String className = (String)user.get(DatabaseContract.Table_Users.COL_TYPE);
-			up = (UserProfile) Class.forName(className).newInstance();
-			
-			up.setUsername(username);
-			up.setFirstName((String)user.get(DatabaseContract.Table_Users.COL_FIRST_NAME));
-			up.setLastName((String)user.get(DatabaseContract.Table_Users.COL_LAST_NAME));
-			up.setPassword((String)user.get(DatabaseContract.Table_Users.COL_PASSWORD));
-			up.setEmailAddress((String)user.get(DatabaseContract.Table_Users.COL_EMAIL));
-
-			DateFormat format = new SimpleDateFormat("yyyy-MM-dd H:m:s", Locale.ENGLISH);
-			Date date = format.parse((String)user.get(DatabaseContract.Table_Users.COL_LAST_LOGIN));
-			up.setLastLogin(date);
-			
+					
+			for (Object key : jsonTable.keySet()) {
+		        //based on you key types
+		        String keyStr = (String)key;
+		        JSONObject keyvalue = (JSONObject) jsonTable.get(keyStr);
+		        
+		        DateFormat format = new SimpleDateFormat("yyyy-MM-dd H:m:s", Locale.ENGLISH);
+				Date dateAdded = format.parse((String)keyvalue.get("DateAdded"));
+				Date publicationDate = format.parse((String)keyvalue.get("PublicationDate"));
+				
+		       if(keyvalue.get("Title").toString().toLowerCase().contains(queryString.toLowerCase())){
+		    	   Book regulardata = new Book(dateAdded, keyvalue.get("Author").toString(), Long.parseLong(keyvalue.get("ISBN").toString()), Integer.parseInt(keyvalue.get("Pages").toString()), publicationDate, keyvalue.get("Publisher").toString(), keyvalue.get("Review").toString(), keyvalue.get("Summary").toString(), keyvalue.get("Title").toString());
+		        	regularDatas.add(regulardata);
+		        }		        
+		    }	
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 		
-		return up;
+		return regularDatas;
 	}
 	
 	public UserProfile findUser(String username)
@@ -146,7 +139,7 @@ public class JsonDB {
 			JSONObject jsonTables = this.getJsonTables();
 
 			// Get the table 
-			JSONObject jsonTable = (JSONObject) jsonTables.get(table);
+			JSONObject jsonTable = (JSONObject) jsonTables.get(DatabaseContract.Table_Users.TABLE_NAME);
 				
 			// Get the user
 			JSONObject user = (JSONObject) jsonTable.get(username);

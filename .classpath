@@ -14,5 +14,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="libs/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ken Vernaillen/OneDrive/School 2015-2016/Software Architectures/Assignments/assignment 2/New Workspace/web_portal/WebContent/WEB-INF/lib/hsqldb.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
