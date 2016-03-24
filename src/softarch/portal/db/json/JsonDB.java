@@ -4,7 +4,9 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.json.simple.JSONArray;
@@ -91,6 +93,49 @@ public class JsonDB {
 		insert(DatabaseContract.Table_Users.TABLE_NAME, up.getUsername(), jsonObject);
 	}
 	
+	public List<RegularData> findRecords(String informationType, String queryString){
+		List<RegularData> regularDatas = new ArrayList<RegularData>();
+		try
+		{
+			
+			// Get our database
+			JSONObject jsonTables = this.getJsonTables();
+
+			// Get the table 
+			JSONObject jsonTable = (JSONObject) jsonTables.get(DatabaseContract);
+			
+			
+			// Get the user
+			//JSONObject user = (JSONObject) jsonTable.get(username);
+			for (JSONObject e : jsonTable) {
+				if (e.get().contains(queryString) {
+				   //add to my result list
+					regularDatas.add(e);
+			  }
+			}
+			
+			// Get the right type to return
+			String className = (String)user.get(DatabaseContract.Table_Users.COL_TYPE);
+			up = (UserProfile) Class.forName(className).newInstance();
+			
+			up.setUsername(username);
+			up.setFirstName((String)user.get(DatabaseContract.Table_Users.COL_FIRST_NAME));
+			up.setLastName((String)user.get(DatabaseContract.Table_Users.COL_LAST_NAME));
+			up.setPassword((String)user.get(DatabaseContract.Table_Users.COL_PASSWORD));
+			up.setEmailAddress((String)user.get(DatabaseContract.Table_Users.COL_EMAIL));
+
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd H:m:s", Locale.ENGLISH);
+			Date date = format.parse((String)user.get(DatabaseContract.Table_Users.COL_LAST_LOGIN));
+			up.setLastLogin(date);
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return up;
+	}
 	
 	public UserProfile findUser(String username)
 	{
@@ -129,6 +174,8 @@ public class JsonDB {
 		
 		return up;
 	}
+	
+	
 	
 	public boolean userExists(String username)
 	{
