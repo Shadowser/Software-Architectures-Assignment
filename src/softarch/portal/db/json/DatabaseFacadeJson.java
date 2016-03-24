@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Date;
 
 
-public class DatabaseFacade implements IDatabaseFacade {
+public class DatabaseFacadeJson implements IDatabaseFacade {
 
 	private String dbPath = "database.json";
 	private JsonDB jsonDB;
@@ -16,7 +16,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 	/**
 	 * Creates a new database facade.
 	 */
-	public DatabaseFacade(String dbPath) {
+	public DatabaseFacadeJson(String dbPath) {
 		this.dbPath = dbPath;
 		this.jsonDB = new JsonDB(dbPath);
 	}

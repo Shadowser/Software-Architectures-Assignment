@@ -24,7 +24,11 @@ public class FreeSubscription extends RegularUser {
 			request.getParameter("EmailAddress"),
 			new Date());
 	}
-
+	
+	public FreeSubscription(){
+		//
+	}
+	
 	/**
 	 * Creates a new <i>free subscription</i> account from a
 	 * <code>java.sql.ResultSet</code> object.

@@ -11,7 +11,7 @@ import java.util.Date;
  * This class implements a facade for all of the database layer's functionality.
  * @author Niels Joncheere
  */
-public class DatabaseFacade {
+public class DatabaseFacadeSQL {
 	private UserDatabase	userDb;
 	private RegularDatabase	regularDb;
 	private RawDatabase	rawDb;
@@ -19,7 +19,7 @@ public class DatabaseFacade {
 	/**
 	 * Creates a new database facade.
 	 */
-	public DatabaseFacade(String dbUser, String dbPassword, String dbUrl) {
+	public DatabaseFacadeSQL(String dbUser, String dbPassword, String dbUrl) {
 		userDb		= new UserDatabase(	dbUser,
 							dbPassword,
 							dbUrl);
