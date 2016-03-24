@@ -57,8 +57,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 	public boolean userExists(String username)
 		throws JsonException {
 
-		// TODO
-		return false;
+		return jsonDB.userExists(username);
 	}
 
 	/**
