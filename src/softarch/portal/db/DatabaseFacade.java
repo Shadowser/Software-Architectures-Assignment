@@ -1,16 +1,11 @@
 package softarch.portal.db;
 
-import softarch.portal.data.RawData;
-import softarch.portal.data.RegularData;
-import softarch.portal.data.UserProfile;
 import softarch.portal.db.IDatabaseFacade;
 import softarch.portal.db.json.DatabaseFacadeJson;
 import softarch.portal.db.sql.DatabaseFacadeSQL;
 
-import java.util.List;
 import java.util.Map;
 import java.io.IOException;
-import java.util.Date;
 
 
 public class DatabaseFacade {
