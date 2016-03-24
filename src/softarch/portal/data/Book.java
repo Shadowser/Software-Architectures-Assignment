@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
+
 /**
  * This class represents a book.
  * @author Niels Joncheere
@@ -146,5 +148,20 @@ public class Book extends RegularData {
 	 */
 	public String asSqlDelete(RawData rd) {
 		return "DELETE FROM RawBook WHERE ID = " + rd.getId() + ";";
+	}
+
+	@Override
+	public JSONObject asJSON() {
+		JSONObject jo = new JSONObject();
+		jo.put("pk", title);
+		jo.put("author", author);
+		jo.put("isbn", isbn);
+		jo.put("pages", pages);
+		jo.put("publicationdate", publicationDate);
+		jo.put("publisher", publisher);
+		jo.put("review", review);
+		jo.put("summary", summary);
+		
+		return jo;
 	}
 }

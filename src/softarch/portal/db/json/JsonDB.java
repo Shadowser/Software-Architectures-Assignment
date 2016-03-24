@@ -192,7 +192,15 @@ public class JsonDB {
 	}
 
 	public void insertRegular(RegularData rd) {
-		// TODO Auto-generated method stub
+		
+		JSONObject jsonObject = rd.asJSON();
+		String primarykey = (String)jsonObject.get("pk");
+		jsonObject.remove("pk"); // Don't save the PK.
+		
+		String type = rd.getClass().getName();
+		jsonObject.put(DatabaseContract.Table_Regular.COL_TYPE, type);
+			
+		insert(DatabaseContract.Table_Regular.TABLE_NAME, primarykey, jsonObject);
 		
 	}
 }

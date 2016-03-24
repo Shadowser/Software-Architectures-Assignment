@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -124,5 +126,11 @@ public class Article extends RegularData {
 	 */
 	public String asSqlDelete(RawData rd) {
 		return "DELETE FROM RawArticle WHERE ID = " + rd.getId() + ";";
+	}
+
+	@Override
+	public JSONObject asJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

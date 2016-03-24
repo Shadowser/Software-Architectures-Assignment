@@ -8,6 +8,8 @@ import java.text.ParseException;
 import java.net.MalformedURLException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
+
 /**
  * This class represents an interesting website.
  * @author Niels Joncheere
@@ -121,5 +123,11 @@ public class InterestingWebsite extends RegularData {
 	public String asSqlDelete(RawData rd) {
 		return	"DELETE FROM RawInterestingWebsite WHERE ID = " +
 			rd.getId() + ";";
+	}
+
+	@Override
+	public JSONObject asJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
