@@ -66,7 +66,7 @@ public class JsonDB {
 			// Add the record
 			jsonTable.put(primarykey, jsonObject);
 			
-			// Save jsonTable to file
+			// Save jsonTable to file thanks to pointers
 			this.saveJSON(jsonTables.toJSONString());
 		}
 		catch(Exception e)
@@ -181,7 +181,7 @@ public class JsonDB {
 			// Delete the record
 			jsonTable.remove(primarykey);
 			
-			// Save jsonTable to file
+			// Save jsonTable to file thanks to pointers
 			this.saveJSON(jsonTables.toJSONString());
 		}
 		catch(Exception e)

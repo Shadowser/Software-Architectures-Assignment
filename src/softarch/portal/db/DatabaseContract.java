@@ -10,7 +10,7 @@ public class DatabaseContract {
 	    public static final String COL_LAST_NAME = "LastName";
 	    public static final String COL_EMAIL = "EmailAddress";
 	    public static final String COL_LAST_LOGIN = "LastLogin";
-	    public static final String COL_TYPE = "type";
+	    public static final String COL_TYPE = "Type";
 	}
 	
 }
