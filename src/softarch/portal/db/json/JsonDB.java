@@ -116,8 +116,8 @@ public class JsonDB {
 				Date dateAdded = format.parse((String)keyvalue.get("DateAdded"));
 				Date publicationDate = format.parse((String)keyvalue.get("PublicationDate"));
 				
-		       if(keyvalue.get("Title").toString().toLowerCase().contains(queryString.toLowerCase())){
-		    	   Book regulardata = new Book(dateAdded, keyvalue.get("Author").toString(), Long.parseLong(keyvalue.get("ISBN").toString()), Integer.parseInt(keyvalue.get("Pages").toString()), publicationDate, keyvalue.get("Publisher").toString(), keyvalue.get("Review").toString(), keyvalue.get("Summary").toString(), keyvalue.get("Title").toString());
+		       if(keyStr.toLowerCase().contains(queryString.toLowerCase())){
+		    	   Book regulardata = new Book(dateAdded, keyvalue.get("Author").toString(), Long.parseLong(keyvalue.get("ISBN").toString()), Integer.parseInt(keyvalue.get("Pages").toString()), publicationDate, keyvalue.get("Publisher").toString(), keyvalue.get("Review").toString(), keyvalue.get("Summary").toString(), keyStr);
 		        	regularDatas.add(regulardata);
 		        }		        
 		    }	

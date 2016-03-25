@@ -1,8 +1,8 @@
 {
 	"regulardata":
 	{ 
-		"test" : {"Pages":"0","PublicationDate":"2008-02-01 14:32:00","ISBN":"0","Author":"Mrs Test","Summary":"test","Publisher":"test","Review":"test","DateAdded":"2008-02-01 14:32:00"},
-	  	"Design Patterns" : {"Pages":"0","PublicationDate":"1995-02-01 14:32:00","ISBN":"0","Author":"Gama","Summary":"Design Patterns","Publisher":"Addison-Wesley","Review":"","DateAdded":"2016-03-01 14:38:00"}
+		"test" : {"Type":"softarch.portal.data.Book","Pages":"0","PublicationDate":"2008-02-01 14:32:00","ISBN":"0","Author":"Mrs Test","Summary":"test","Publisher":"test","Review":"test","DateAdded":"2008-02-01 14:32:00"},
+	  	"Design Patterns" : {"Type":"softarch.portal.data.Book","Pages":"0","PublicationDate":"1995-02-01 14:32:00","ISBN":"0","Author":"Gama","Summary":"Design Patterns","Publisher":"Addison-Wesley","Review":"","DateAdded":"2016-03-01 14:38:00"}
 	 },
 	 "users":
 	 {
