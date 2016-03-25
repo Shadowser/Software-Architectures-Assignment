@@ -27,6 +27,7 @@ public class ReadConfigFile {
 			
 			result.put("database", prop.getProperty("database"));
 			result.put("url", prop.getProperty("url"));
+			result.put("dburl", prop.getProperty("dburl"));
 			result.put("username", prop.getProperty("username"));
 			result.put("password", prop.getProperty("password"));
 			

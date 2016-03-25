@@ -26,7 +26,7 @@ public class DatabaseFacade {
 		}
 		switch(properties.get("database")){
 		case "SQL":{
-			dbFacade = new DatabaseFacadeSQL(properties.get("username"), properties.get("password"), properties.get("url"));
+			dbFacade = new DatabaseFacadeSQL(properties.get("username"), properties.get("password"), properties.get("dburl"));
 		}
 		break;
 		case "JSON":{

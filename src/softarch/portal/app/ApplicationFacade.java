@@ -29,7 +29,7 @@ public class ApplicationFacade {
 	public ApplicationFacade() {
 
 		IDatabaseFacade dbFacade = DatabaseFacade.getDatabaseFacade();
-
+		
 		userManager = new UserManager(dbFacade);
 		queryManager = new QueryManager(dbFacade);
 		administrationManager = new AdministrationManager(dbFacade);
