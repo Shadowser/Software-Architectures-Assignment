@@ -21,6 +21,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.Transformer;
 import softarch.portal.app.ApplicationFacade;
+import softarch.portal.db.webservice.LibraryService;
 
 /**
  * This class implements the portal's internet front-end. It is a
@@ -117,7 +118,7 @@ public class InternetFrontEnd extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
+		
 		String dbUser = getInitParameter("db_user");
 		String dbPassword = getInitParameter("db_pass");
 		String dbUrl = fullPath+getInitParameter("db_url");

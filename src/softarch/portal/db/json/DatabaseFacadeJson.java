@@ -5,6 +5,7 @@ import softarch.portal.data.RegularData;
 import softarch.portal.data.UserProfile;
 import softarch.portal.db.DatabaseException;
 import softarch.portal.db.IDatabaseFacade;
+import softarch.portal.db.webservice.WebServiceFacade;
 
 import java.util.List;
 import java.util.Date;
@@ -68,7 +69,10 @@ public class DatabaseFacadeJson implements IDatabaseFacade {
 	public List findRecords(String informationType, String queryString)
 		throws DatabaseException {
 
-		return jsonDB.findRecords(informationType, queryString);
+		List<RegularData> data = new WebServiceFacade().findRecords(informationType, queryString);
+		data.addAll(jsonDB.findRecords(informationType, queryString));
+		
+		return data; 
 	}
 
 	/**

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import softarch.portal.db.DatabaseException;
+import softarch.portal.db.webservice.LibraryService;
 
 import java.util.Iterator;
 
